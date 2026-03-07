@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Banyan Fig | Architecture & Interior Design Studio India</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Banyan Fig is a creative architectural and interior design studio in India, crafting emotive spaces through thoughtful architecture, interiors, and visual storytelling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f4f2;
+      --bg-alt: #faf9f7;
+      --text: #191919;
+      --muted: #77736a;
+      --accent: #b27a4b;
+      --accent-soft: rgba(178, 122, 75, 0.18);
+      --border: #e2ddd4;
+      --card-bg: #ffffff;
+      --shadow-soft: 0 18px 45px rgba(15, 12, 10, 0.16);
+      --radius-xl: 32px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --tf: 0.25s ease;
+      --tm: 0.4s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top left, #f7f3ee 0, #f4f2ed 32%, #f6f4f0 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+
+    .page-shell { min-height: 100vh; display: flex; flex-direction: column; }
+    .max-w { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── NAV ── */
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(245,244,242,0.96), rgba(245,244,242,0.82), transparent);
+      border-bottom: 1px solid rgba(214,206,196,0.7);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-mark {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: radial-gradient(circle at 20% 20%, #f4efe6 0, #c2a585 38%, #5a412a 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fdfaf6; font-weight: 600; font-size: 18px;
+      box-shadow: 0 10px 25px rgba(40,25,14,0.35);
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 1px; }
+    .brand-text-main { font-size: 18px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+    .brand-text-sub { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 24px; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .nav-links a { position: relative; padding-bottom: 2px; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--accent); transition: width var(--tf); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 8px 16px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(178,122,75,0.6);
+      background: linear-gradient(to right, rgba(178,122,75,0.08), rgba(133,93,61,0.14));
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3c2c1b;
+      display: flex; align-items: center; gap: 8px; cursor: pointer;
+      transition: box-shadow var(--tf), transform var(--tf);
+    }
+    .nav-cta:hover { box-shadow: 0 10px 28px rgba(76,47,22,0.28); transform: translateY(-1px); }
+    .nav-toggle {
+      display: none; width: 34px; height: 34px; border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.85);
+      align-items: center; justify-content: center; cursor: pointer;
+    }
+    .nav-toggle-line { width: 16px; height: 2px; border-radius: 999px; background: #222; position: relative; }
+    .nav-toggle-line::before, .nav-toggle-line::after {
+      content: ""; position: absolute; left: 0; width: 100%; height: 2px;
+      border-radius: 999px; background: #222;
+      transition: transform 0.2s ease, top 0.2s ease;
+    }
+    .nav-toggle-line::before { top: -5px; }
+    .nav-toggle-line::after { top: 5px; }
+    .nav-toggle.active .nav-toggle-line { background: transparent; }
+    .nav-toggle.active .nav-toggle-line::before { top: 0; transform: rotate(42deg); }
+    .nav-toggle.active .nav-toggle-line::after { top: 0; transform: rotate(-42deg); }
+    .nav-mobile { display: none; flex-direction: column; padding-bottom: 16px; gap: 12px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .nav-mobile a { padding: 6px 0; border-bottom: 1px solid rgba(216,209,200,0.7); }
+    .nav-mobile a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    .hero { padding: 46px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1.3fr); gap: 40px; align-items: stretch; }
+    .hero-left { display: flex; flex-direction: column; gap: 26px; justify-content: center; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px; padding: 4px 12px 4px 4px;
+      border-radius: 999px; background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(214,206,196,0.9); box-shadow: 0 10px 28px rgba(14,5,0,0.06);
+    }
+    .hero-dot {
+      width: 28px; height: 28px; border-radius: 999px;
+      background: #4b341c;
+      display: flex; align-items: center; justify-content: center; color: #fdfaf6; font-size: 14px;
+    }
+    .hero-tag span { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .hero-title { font-size: clamp(32px,4vw,44px); letter-spacing: 0.02em; line-height: 1.22; font-weight: 600; }
+    .hero-title span.mark { position: relative; display: inline-block; padding: 0 4px; }
+    .hero-title span.mark::before {
+      content: ""; position: absolute; inset: 72% 0 -6px 0;
+      background: linear-gradient(to right, #ecd6b8, #f5ede1); opacity: 0.9; border-radius: 999px; z-index: -1;
+    }
+    .hero-subtitle { color: var(--muted); font-size: 14px; max-width: 420px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn-primary {
+      padding: 12px 24px; border-radius: var(--radius-pill); border: none;
+      background: #4b341b;
+      color: #fdf7ef; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 16px 40px rgba(43,24,7,0.45);
+      transition: transform var(--tf), box-shadow var(--tf), filter var(--tf);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 50px rgba(30,15,2,0.55); filter: brightness(1.04); }
+    .btn-secondary {
+      padding: 11px 18px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(154,128,98,0.65); background: rgba(255,255,255,0.88);
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; color: #4a3b2b;
+      box-shadow: 0 12px 30px rgba(39,25,10,0.18);
+      transition: transform var(--tf), box-shadow var(--tf), background var(--tf);
+    }
+    .btn-secondary:hover { transform: translateY(-1px); background: #f8f4ee; box-shadow: 0 18px 40px rgba(39,25,10,0.2); }
+    .btn-secondary-icon { width: 22px; height: 22px; border-radius: 999px; border: 1px solid rgba(154,128,98,0.7); display: flex; align-items: center; justify-content: center; font-size: 11px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 8px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: #c3a586; }
+    .hero-right { position: relative; }
+    .hero-card {
+      position: relative; height: 100%; min-height: 340px; border-radius: var(--radius-xl); overflow: hidden;
+      background: radial-gradient(circle at top left, #f8f3ed 0, #d0ba9e 35%, #7a5a3b 85%);
+      box-shadow: var(--shadow-soft); display: grid; grid-template-rows: minmax(0,1.2fr) auto;
+    }
+    .hero-visual { position: relative; overflow: hidden; }
+    .hero-visual::before {
+      content: ""; position: absolute; inset: 0;
+      background: url("https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/487936417_18319298407203502_3640166037052117132_n.webp?stp=dst-webp_s720x720&_nc_cat=102&ig_cache_key=MzYwMDUwNDE2MzUwOTI4NDQzMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTAxOC5zZHIuQzMifQ%3D%3D&_nc_ohc=osYhGmaAp1oQ7kNvwEkzf8i&_nc_oc=AdnNguHCsgV5EGvlSYRKvKbbleptEYAppUoH4P1oOVSu1fV1cHCLRA6fllMKNnnA1UU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=cW-SXg_6_1ROaMWBwm9G8g&_nc_ss=8&oh=00_Afz0Ftim3VFWTz35zUoxeZW5ATQ0lCrY4QF69T5Gx8F6Lg&oe=69B06FFD") center/cover no-repeat;
+      filter: grayscale(24%) contrast(1.02); transform: scale(1.04); transition: transform 8s ease-out;
+    }
+    .hero-card:hover .hero-visual::before { transform: scale(1.08); }
+    .hero-visual-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,10,5,0.66), rgba(15,10,5,0.05)); }
+    .hero-visual-caption { position: absolute; left: 18px; bottom: 18px; color: #f4eee5; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; display: inline-flex; flex-direction: column; gap: 4px; }
+    .hero-visual-caption span.label { opacity: 0.7; }
+    .hero-visual-stamp { position: absolute; right: 16px; top: 16px; width: 58px; height: 58px; border-radius: 50%; border: 1px solid rgba(246,236,222,0.9); display: flex; align-items: center; justify-content: center; color: #f7f1e6; font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; background: radial-gradient(circle at 20% 0, rgba(255,255,255,0.3), transparent 60%), rgba(0,0,0,0.35); backdrop-filter: blur(10px); }
+    .hero-visual-stamp-inner { width: 42px; height: 42px; border-radius: 50%; border: 1px dashed rgba(247,241,231,0.8); display: flex; align-items: center; justify-content: center; }
+    .hero-bottom { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, rgba(246,239,230,0.98), rgba(238,228,214,0.96)); }
+    .hero-bottom-main { display: flex; flex-direction: column; gap: 4px; font-size: 12px; }
+    .hero-bottom-main span.label { letter-spacing: 0.22em; text-transform: uppercase; color: #8a7f72; font-size: 10px; }
+    .hero-bottom-main span.value { font-size: 12px; color: #4a3421; }
+    .hero-bottom-metrics { display: flex; gap: 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: #7c6a54; }
+    .hero-bottom-metrics span strong { display: block; font-size: 13px; letter-spacing: 0.05em; color: #3f2e1f; }
+
+    /* ── SECTIONS ── */
+    section { padding: 56px 0; }
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: 32px; }
+    .section-title-wrap { display: flex; flex-direction: column; gap: 4px; }
+    .section-kicker { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .section-title { font-size: 22px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .section-sub { max-width: 360px; font-size: 13px; color: var(--muted); }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg-alt); border-radius: 48px 48px 0 0; margin-top: 10px; box-shadow: 0 -8px 35px rgba(0,0,0,0.04); }
+    .about-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1.1fr); gap: 40px; align-items: center; }
+    .about-text { font-size: 14px; color: #423b33; display: flex; flex-direction: column; gap: 16px; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+    .chip { padding: 6px 12px; border-radius: var(--radius-pill); border: 1px solid rgba(189,173,154,0.95); background: rgba(255,255,255,0.95); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7a6a57; }
+    .about-stats { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 10px; font-size: 12px; color: var(--muted); }
+    .about-stat strong { display: block; font-size: 18px; color: #28201a; margin-bottom: 2px; }
+
+    /* ── ABOUT COLLAGE VISUAL ── */
+    .about-visual { position: relative; }
+
+    /* The collage container */
+    .about-collage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 0.92;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: #c9bfb0;
+      box-shadow: 0 28px 64px rgba(24,14,4,0.32);
+    }
+
+    /* Main background — modern architecture exterior */
+    .collage-main {
+      position: absolute; inset: 0;
+      background: url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200') center/cover no-repeat;
+      filter: grayscale(8%) contrast(1.02);
+      transition: transform 8s ease-out;
+    }
+    .about-collage:hover .collage-main { transform: scale(1.04); }
+
+    /* Subtle darkening overlay */
+    .collage-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, rgba(18,10,3,0.12) 0%, transparent 50%, rgba(18,10,3,0.26) 100%);
+      pointer-events: none;
+    }
+
+    /* Top-left inset — furniture / sofa detail */
+    .collage-inset-tl {
+      position: absolute;
+      top: 14px; left: 14px;
+      width: 32%; aspect-ratio: 1 / 0.85;
+      border-radius: 14px; overflow: hidden;
+      border: 2.5px solid rgba(255,252,248,0.94);
+      box-shadow: 0 14px 34px rgba(18,8,0,0.48);
+      background: #cbbfae;
+      cursor: zoom-in;
+      transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s ease;
+    }
+    .collage-inset-tl:hover { transform: scale(1.04) rotate(-1.5deg); box-shadow: 0 22px 48px rgba(18,8,0,0.55); }
+    .collage-inset-tl::before {
+      content: ""; position: absolute; inset: 0;
+      background: url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/491896070_18320989318203502_961803010524514521_n.webp?_nc_cat=101&ig_cache_key=MzYxMjA0MzI4NDgwNzY2NDk1Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=TCHtzM_1Vi4Q7kNvwEC7Pck&_nc_oc=AdnA0rYKkB5XHhmvAxd6gPMYvqnKWcbRkijdWmcfU2yfXl-adsFe5RiUKYOu8Ws4UMA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1R7AvvBcwrbqybyhZoe4aw&_nc_ss=8&oh=00_AfxrHa9RNPyBY78p8OcvTSBOg1ow5ipEeRJEagJvgviXEw&oe=69B04E57') center/cover no-repeat;
+      filter: grayscale(10%) saturate(1.1);
+    }
+
+    /* Bottom-right inset — kitchen / material details */
+    .collage-inset-br {
+      position: absolute;
+      bottom: 60px; right: 14px;
+      width: 32%; aspect-ratio: 1 / 0.78;
+      border-radius: 14px; overflow: hidden;
+      border: 2.5px solid rgba(255,252,248,0.94);
+      box-shadow: 0 14px 34px rgba(18,8,0,0.48);
+      background: #c8bfb2;
+      cursor: zoom-in;
+      transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), box-shadow 0.4s ease;
+    }
+    .collage-inset-br:hover { transform: scale(1.04) rotate(1.5deg); box-shadow: 0 22px 48px rgba(18,8,0,0.55); }
+    .collage-inset-br::before {
+      content: ""; position: absolute; inset: 0;
+      background: url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/495628116_18322829305203502_8066470797161278925_n.webp?_nc_cat=110&ig_cache_key=MzYyNDM0NDA2MzkxMjM4NDg4Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=jokJGBysA94Q7kNvwGskaoq&_nc_oc=Adm8NHa17Bnpc9UcGTPSZdGjeplx7sef4m6qLyOgrSRevEt2WNLoX7C6Xe2vcg7m2Ao&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_AfyRmkAm7uEwbFlqUGqf880rpH7jsi5TRbUfsW7StukAUQ&oe=69B04373') center/cover no-repeat;
+      filter: grayscale(6%) saturate(1.05);
+    }
+
+    /* Badge at bottom-left — "Design Ethos · Architecture · Interiors" */
+    .collage-badge {
+      position: absolute;
+      bottom: 14px; left: 14px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 7px 14px 7px 7px;
+      border-radius: 999px;
+      background: rgba(253,250,246,0.97);
+      border: 1px solid rgba(218,205,188,0.95);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 28px rgba(24,12,2,0.34);
+    }
+    .collage-badge-mark {
+      width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+      background: radial-gradient(circle at 22% 18%, #f4efe6 0, #c2a585 38%, #5a412a 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #fdfaf6; font-weight: 700; font-size: 11px; letter-spacing: 0.04em;
+      box-shadow: 0 6px 16px rgba(40,22,6,0.42);
+    }
+    .collage-badge-text { display: flex; flex-direction: column; gap: 1px; line-height: 1.2; }
+    .collage-badge-text .badge-title {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #3c2c1b; font-weight: 600;
+    }
+    .collage-badge-text .badge-sub {
+      font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #998572;
+    }
+
+    /* Floating design ethos card (top-right of visual area) */
+    .about-floating-card {
+      position: absolute; right: -10px; top: 18px;
+      padding: 12px 14px; border-radius: 18px;
+      background: rgba(252,249,244,0.97);
+      border: 1px solid rgba(219,206,188,0.9);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 36px rgba(34,21,6,0.25);
+      font-size: 11px; color: #634b33; max-width: 180px;
+      z-index: 2;
+    }
+    .about-floating-card span.label {
+      display: block; text-transform: uppercase;
+      letter-spacing: 0.16em; font-size: 10px; color: #998572; margin-bottom: 4px;
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio { background: var(--bg); }
+    .filter-row { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-btn { padding: 6px 14px; border-radius: var(--radius-pill); border: 1px solid transparent; background: transparent; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: all var(--tf); }
+    .filter-btn.active { background: rgba(255,255,255,0.96); border-color: rgba(169,145,117,0.9); color: #4a3a2a; box-shadow: 0 10px 26px rgba(29,16,3,0.18); transform: translateY(-1px); }
+    .filter-meta { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .project-card {
+      background: var(--card-bg); border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--border); display: flex; flex-direction: column;
+      cursor: pointer; position: relative;
+      transition: transform var(--tm), box-shadow var(--tm), border-color var(--tm);
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.18); border-color: rgba(158,136,108,0.95); background: #fffdf9; }
+    .project-media { position: relative; padding-top: 72%; overflow: hidden; }
+    .project-thumb { position: absolute; inset: 0; background-position: center; background-size: cover; transition: transform 7s ease-out, filter 0.6s ease; filter: grayscale(18%); }
+    .project-card:hover .project-thumb { transform: scale(1.08); filter: grayscale(0%); }
+    .project-label { position: absolute; left: 10px; top: 10px; padding: 4px 10px; border-radius: 999px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; background: rgba(16,9,1,0.7); color: #f9f3e9; backdrop-filter: blur(9px); }
+    .project-body { padding: 12px 13px; display: flex; flex-direction: column; gap: 5px; }
+    .project-title { font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .project-meta { display: flex; justify-content: space-between; align-items: baseline; font-size: 11px; color: var(--muted); }
+    .project-meta span.location { text-transform: uppercase; letter-spacing: 0.16em; }
+    .project-chip { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(198,178,149,0.9); background: rgba(250,245,237,0.95); }
+    .project-hover { position: absolute; inset: auto 10px 10px auto; padding: 6px 9px; border-radius: 999px; border: 1px solid rgba(245,239,231,0.9); background: rgba(26,16,3,0.68); color: #f8f2e8; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; transform: translateY(6px); transition: opacity var(--tf), transform var(--tf); }
+    .project-card:hover .project-hover { opacity: 1; transform: translateY(0); }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg-alt); }
+    .services-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+    .service-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 18px 16px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; box-shadow: 0 10px 26px rgba(0,0,0,0.05); position: relative; overflow: hidden; transition: transform var(--tm), box-shadow var(--tm), border-color var(--tm); }
+    .service-card::before { content: ""; position: absolute; inset: -20%; background: radial-gradient(circle at 0 0, rgba(203,162,110,0.15), transparent 60%); opacity: 0; transition: opacity var(--tm); pointer-events: none; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(0,0,0,0.18); border-color: rgba(184,159,127,0.95); background: #fffdf8; }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { width: 34px; height: 34px; border-radius: 14px; background: rgba(178,122,75,0.1); display: flex; align-items: center; justify-content: center; font-size: 18px; color: #8c6139; box-shadow: inset 0 0 0 1px rgba(178,122,75,0.16); }
+    .service-title { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .service-body { font-size: 13px; color: var(--muted); }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .service-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; background: rgba(245,237,226,0.9); color: #786753; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--bg); }
+    .testimonial-wrap { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1.1fr); gap: 28px; }
+    .testimonial-carousel { position: relative; background: var(--card-bg); border-radius: var(--radius-xl); border: 1px solid var(--border); box-shadow: 0 16px 40px rgba(0,0,0,0.12); overflow: hidden; }
+    .testimonial-carousel::before { content: "\201C"; position: absolute; top: -24px; left: -4px; font-size: 100px; color: rgba(216,201,182,0.5); font-family: "Georgia", serif; }
+    .testimonial-track { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .testimonial-slide { min-width: 100%; padding: 28px 24px 22px; display: flex; flex-direction: column; }
+    .testimonial-text { font-size: 15px; color: #3c342b; max-width: 420px; margin-left: 22px; position: relative; z-index: 1; line-height: 1.65; }
+    .testimonial-author { margin-top: 18px; margin-left: 22px; font-size: 13px; position: relative; z-index: 1; }
+    .testimonial-author span.name { font-weight: 600; }
+    .testimonial-author span.meta { display: block; font-size: 12px; color: var(--muted); }
+    .testimonial-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .pill { padding: 5px 10px; border-radius: 999px; background: rgba(244,237,227,0.9); color: #7b6650; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; }
+    .carousel-controls { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px 16px; border-top: 1px solid rgba(226,221,212,0.7); background: rgba(250,248,244,0.6); }
+    .carousel-dots { display: flex; gap: 7px; align-items: center; }
+    .carousel-dot { width: 6px; height: 6px; border-radius: 999px; background: rgba(178,122,75,0.25); cursor: pointer; transition: width 0.3s ease, background 0.3s ease; border: none; padding: 0; }
+    .carousel-dot.active { width: 20px; background: var(--accent); }
+    .carousel-arrows { display: flex; gap: 8px; }
+    .carousel-arrow { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(178,122,75,0.4); background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; color: #5a3e25; transition: all var(--tf); }
+    .carousel-arrow:hover { background: #f5ede2; border-color: var(--accent); box-shadow: 0 8px 20px rgba(76,47,22,0.2); transform: translateY(-1px); }
+    .carousel-progress { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(to right, #b27a4b, #d4a06a); border-radius: 999px; transition: width 0.1s linear; z-index: 2; }
+    .testimonial-side { display: flex; flex-direction: column; gap: 14px; font-size: 13px; color: var(--muted); }
+    .testimonial-side span.metric { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dashed rgba(203,190,173,0.85); padding-bottom: 6px; }
+    .testimonial-side span.metric:last-child { border-bottom: none; }
+    .testimonial-side strong { font-size: 16px; color: #3a2f23; }
+
+    /* ── CONTACT ── */
+    .contact { background: radial-gradient(circle at top left, #f5eee6 0, #f4f0ea 40%, #f7f4ef 100%); }
+    .contact-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1.1fr); gap: 32px; align-items: flex-start; }
+    .contact-info { font-size: 14px; color: #4d4338; display: flex; flex-direction: column; gap: 16px; }
+    .contact-block { display: flex; flex-direction: column; gap: 6px; }
+    .contact-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .contact-value { font-size: 14px; }
+    .contact-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .social-link { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(166,145,119,0.8); background: rgba(255,255,255,0.98); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #4a3825; box-shadow: 0 10px 24px rgba(0,0,0,0.16); transition: all var(--tf); }
+    .social-link:hover { transform: translateY(-2px); background: #faf0e3; box-shadow: 0 16px 40px rgba(0,0,0,0.2); }
+    .badge-india { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(180,155,123,0.9); background: rgba(255,253,249,0.98); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #5a4631; margin-top: 8px; }
+    .badge-india-flag { width: 16px; height: 10px; border-radius: 2px; overflow: hidden; display: flex; flex-direction: column; }
+    .badge-india-flag span { flex: 1; }
+    .badge-india-flag span:nth-child(1) { background: #ff9933; }
+    .badge-india-flag span:nth-child(2) { background: white; }
+    .badge-india-flag span:nth-child(3) { background: #138808; }
+    .contact-form-wrap { background: var(--card-bg); border-radius: var(--radius-xl); padding: 20px 18px 18px; border: 1px solid rgba(207,193,176,0.95); box-shadow: 0 18px 46px rgba(0,0,0,0.2); }
+    .contact-form-title { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; color: #7b6a57; }
+    .contact-form-sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 12px; }
+    .form-field { display: flex; flex-direction: column; gap: 4px; font-size: 12px; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .form-input, .form-textarea, .form-select { border-radius: 999px; border: 1px solid rgba(204,189,172,0.95); padding: 9px 12px; font-size: 13px; font-family: inherit; background: rgba(251,248,244,0.98); outline: none; transition: all var(--tf); }
+    .form-textarea { border-radius: 16px; resize: vertical; min-height: 80px; }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: #b27a4b; box-shadow: 0 0 0 1px rgba(178,122,75,0.25); background: #fffdf9; transform: translateY(-1px); }
+    .form-footer { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; font-size: 11px; color: var(--muted); }
+    .form-note { max-width: 220px; }
+    .btn-submit { padding: 10px 18px; border-radius: var(--radius-pill); border: none; background: #19130e; color: #f7efe4; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 14px 32px rgba(0,0,0,0.4); transition: all var(--tf); }
+    .btn-submit:hover { transform: translateY(-2px); background: #241910; box-shadow: 0 20px 48px rgba(0,0,0,0.6); }
+    .btn-submit-icon { width: 18px; height: 18px; border-radius: 50%; background: #f2e4d5; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #5f3e1b; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid rgba(207,197,183,0.9); background: #f3eee7; padding: 16px 0 18px; font-size: 11px; color: var(--muted); }
+    .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .footer-links a { text-transform: uppercase; letter-spacing: 0.18em; font-size: 10px; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════════════════════════════════════
+       PROJECT DRAWER — slides in from LEFT
+    ════════════════════════════════════════ */
+    .drawer-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(12,8,4,0.55);
+      backdrop-filter: blur(6px);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+    .drawer {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(780px, 92vw);
+      background: #faf8f4;
+      z-index: 201;
+      overflow-y: auto;
+      transform: translateX(-100%);
+      transition: transform 0.52s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+    }
+    .drawer.open { transform: translateX(0); }
+
+    .drawer-close {
+      position: absolute; top: 16px; right: 16px; z-index: 10;
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid rgba(166,148,125,0.7);
+      background: rgba(250,248,244,0.95);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: #4a3825; cursor: pointer;
+      transition: background var(--tf), transform var(--tf), box-shadow var(--tf);
+      backdrop-filter: blur(8px);
+    }
+    .drawer-close:hover { background: #f0e6d8; transform: rotate(90deg); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    .drawer-hero {
+      position: relative; height: 380px; flex-shrink: 0; overflow: hidden;
+    }
+    .drawer-hero-img {
+      position: absolute; inset: 0;
+      background-position: center; background-size: cover;
+      filter: grayscale(12%);
+      transition: transform 6s ease-out;
+      cursor: zoom-in;
+    }
+    .drawer.open .drawer-hero-img { transform: scale(1.04); }
+    .drawer-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,6,2,0.78) 0%, rgba(10,6,2,0.1) 50%, transparent 100%); }
+    .drawer-hero-title {
+      position: absolute; bottom: 24px; left: 28px; right: 56px;
+    }
+    .drawer-hero-loc { display: block; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(245,234,218,0.7); margin-bottom: 6px; }
+    .drawer-hero-name {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      font-size: clamp(26px,4vw,38px); font-weight: 400; color: #fdf7ef; line-height: 1.18;
+    }
+    .drawer-hero-badge { position: absolute; top: 18px; left: 18px; padding: 5px 12px; border-radius: 999px; background: rgba(15,8,1,0.65); color: #f4ede2; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; backdrop-filter: blur(9px); }
+
+    .drawer-body { padding: 28px 28px 48px; display: flex; flex-direction: column; gap: 28px; }
+
+    .drawer-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .drawer-pill { padding: 5px 13px; border-radius: 999px; background: rgba(240,232,220,0.9); color: #7a6650; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; }
+
+    .drawer-section-label { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .drawer-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .drawer-description { font-size: 14px; color: #3e352b; line-height: 1.78; }
+
+    .drawer-specs { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px 20px; }
+    .spec-item { display: flex; flex-direction: column; gap: 3px; }
+    .spec-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .spec-value { font-size: 13px; color: #3a2f23; font-weight: 500; }
+
+    .drawer-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .drawer-gallery-item {
+      position: relative;
+      padding-top: 75%;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .drawer-gallery-item:first-child {
+      grid-column: span 2;
+      padding-top: 56%;
+    }
+    .drawer-gallery-img {
+      position: absolute; inset: 0;
+      background-position: center; background-size: cover;
+      filter: grayscale(14%);
+      transition: transform 0.5s ease, filter 0.4s ease;
+    }
+    .drawer-gallery-item:hover .drawer-gallery-img { transform: scale(1.05); filter: grayscale(0%); }
+    .drawer-gallery-item::after {
+      content: '⊕';
+      position: absolute; bottom: 10px; right: 10px;
+      font-size: 18px; color: rgba(245,238,228,0.9);
+      opacity: 0; transition: opacity 0.3s ease;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .drawer-gallery-item:hover::after { opacity: 1; }
+
+    .drawer-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-drawer-primary {
+      padding: 12px 22px; border-radius: var(--radius-pill); border: none;
+      background: #4b341b;
+      color: #fdf7ef; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+      box-shadow: 0 14px 36px rgba(43,24,7,0.42);
+      transition: transform var(--tf), box-shadow var(--tf);
+    }
+    .btn-drawer-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(30,15,2,0.52); }
+    .btn-drawer-secondary {
+      padding: 11px 18px; border-radius: var(--radius-pill);
+      border: 1px solid rgba(154,128,98,0.65); background: rgba(255,255,255,0.88);
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+      color: #4a3b2b; transition: all var(--tf);
+    }
+    .btn-drawer-secondary:hover { transform: translateY(-1px); background: #f8f4ee; }
+
+    /* ════════════════════════════════════════
+       FULLSCREEN IMAGE LIGHTBOX
+    ════════════════════════════════════════ */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 300;
+      background: rgba(8,5,2,0.96);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 90vw; max-height: 90vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-img {
+      max-width: 90vw; max-height: 86vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      transform: scale(0.94);
+      transition: transform 0.4s cubic-bezier(0.34,1.3,0.64,1);
+    }
+    .lightbox.open .lightbox-img { transform: scale(1); }
+
+    .lightbox-close {
+      position: fixed; top: 20px; right: 20px;
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(200,180,155,0.4);
+      background: rgba(30,18,8,0.7);
+      color: #f0e6d8; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--tf), transform var(--tf);
+      backdrop-filter: blur(10px);
+    }
+    .lightbox-close:hover { background: rgba(50,30,12,0.9); transform: rotate(90deg); }
+
+    .lightbox-nav {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid rgba(200,180,155,0.3);
+      background: rgba(20,12,4,0.65);
+      color: #f0e6d8; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--tf), transform var(--tf);
+      backdrop-filter: blur(10px);
+    }
+    .lightbox-nav:hover { background: rgba(40,24,8,0.9); }
+    .lightbox-nav.prev { left: 18px; }
+    .lightbox-nav.next { right: 18px; }
+    .lightbox-nav.prev:hover { transform: translateY(-50%) translateX(-2px); }
+    .lightbox-nav.next:hover { transform: translateY(-50%) translateX(2px); }
+
+    .lightbox-counter {
+      position: fixed; bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(230,215,196,0.7);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero { padding-top: 32px; }
+      .hero-grid { grid-template-columns: minmax(0,1.1fr); }
+      .hero-right { order: -1; }
+      .about-grid, .testimonial-wrap, .contact-grid { grid-template-columns: minmax(0,1fr); }
+      .about-visual { order: -1; }
+      .portfolio-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .services-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .drawer-specs { grid-template-columns: repeat(2,1fr); }
+      .about-floating-card { right: 0; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; }
+      
+      section { padding: 40px 0; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .portfolio-grid { grid-template-columns: minmax(0,1fr); }
+      .services-grid { grid-template-columns: minmax(0,1fr); }
+      .form-grid { grid-template-columns: minmax(0,1fr); }
+      .drawer { width: 100vw; }
+      .drawer-gallery { grid-template-columns: 1fr 1fr; }
+      .drawer-gallery-item:first-child { grid-column: span 2; }
+      .drawer-specs { grid-template-columns: 1fr 1fr; }
+      .about-floating-card { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-shell">
+
+  <!-- ── NAV ── -->
+  <header class="nav-wrap">
+    <div class="max-w">
+      <div class="nav">
+        <a href="#top" class="brand">
+          <div class="brand-mark"><img src="https://media.licdn.com/dms/image/v2/C560BAQFfm7281SBbvg/company-logo_200_200/company-logo_200_200/0/1631845912216?e=1774483200&v=beta&t=ujZaM4RzGdlp9cLupZ8e-axB9aDnAQaQJDg0XdZmc3g"></div>
+          <div class="brand-text">
+            <span class="brand-text-main">Banyan Fig</span>
+            <span class="brand-text-sub">Architecture · Interiors · India</span>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#portfolio">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#testimonials">Clients</a>
+          <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Enquire <span class="arrow">↗</span>
+          </button>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <div class="nav-toggle-line"></div>
+        </button>
+      </div>
+      <nav class="nav-mobile" id="navMobile" aria-hidden="true">
+        <a href="#about">About</a>
+        <a href="#portfolio">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Clients</a>
+        <a href="#contact">Enquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <div class="max-w hero-grid">
+        <div class="hero-left reveal">
+          <div class="hero-tag">
+            <div class="hero-dot">B</div>
+            <span>Spaces that hold stories, not just furniture</span>
+          </div>
+          <h1 class="hero-title">
+            Where <span class="mark">architecture meets emotion</span> for the way you live in India.
+          </h1>
+          <p class="hero-subtitle">Banyan Fig crafts warm, textured spaces that feel quietly luxurious – from considered architecture to emotive interiors and everything in between.</p>
+          <div class="hero-ctas">
+            <button class="btn-primary" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+              View signature projects <span>↳</span>
+            </button>
+            <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              <span class="btn-secondary-icon">✉</span> Start a conversation
+            </button>
+          </div>
+          <div class="hero-meta">
+            <span><span class="hero-meta-dot"></span> Residential, hospitality &amp; workspace</span>
+            <span><span class="hero-meta-dot"></span> Based in India · Available pan-India</span>
+          </div>
+        </div>
+        <div class="hero-right reveal">
+          <div class="hero-card">
+            <div class="hero-visual">
+              <div class="hero-visual-overlay"></div>
+              <div class="hero-visual-caption">
+                <span class="label">Banyan Fig Studio</span>
+                <span class="title">Home as sanctuary</span>
+              </div>
+              <div class="hero-visual-stamp">
+                <div class="hero-visual-stamp-inner">Handcrafted<br>Spaces</div>
+              </div>
+            </div>
+            <div class="hero-bottom">
+              <div class="hero-bottom-main">
+                <span class="label">Current focus</span>
+                <span class="value">Calm, light-filled homes rooted in Indian materials &amp; craft.</span>
+              </div>
+              <div class="hero-bottom-metrics">
+                <span><strong>35+</strong> projects</span>
+                <span><strong>7</strong> cities</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="about">
+      <div class="max-w">
+        <div class="section-header reveal">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Studio</div>
+            <h2 class="section-title">About Banyan Fig</h2>
+          </div>
+          <p class="section-sub">An Indian design studio weaving architecture, interiors and landscape into a single, emotive narrative – where every surface, shadow and silence has been considered.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p>Banyan Fig is a design-first architectural and interior studio rooted in Indian light, materiality and craft. We approach every project as a story – editing, layering and refining until the space feels inevitable.</p>
+            <p>From ground-up architecture to intimate interior interventions, we choreograph proportion, texture and natural light to create homes and spaces that are calm, contemporary and deeply personal.</p>
+            <p>From ground-up architecture to intimate interior interventions, we choreograph proportion, texture and natural light to create homes and spaces that are calm, contemporary and deeply personal.</p>
+            <div class="about-tags">
+              <span class="chip">Architecture</span>
+              <span class="chip">Interior Design</span>
+              <span class="chip">Material &amp; Finish Strategy</span>
+              <span class="chip">Styling &amp; Art Direction</span>
+              <span class="chip">Vastu &amp; Consultation</span>
+            </div>
+            <div class="about-stats">
+              <div class="about-stat"><strong>10+ yrs</strong>Practising architecture &amp; interiors</div>
+              <div class="about-stat"><strong>35+</strong>Completed residences &amp; commercial spaces</div>
+              <div class="about-stat"><strong>Client-first</strong>Limited concurrent projects for deep involvement</div>
+            </div>
+          </div>
+
+          <!-- ── NEW COLLAGE VISUAL ── -->
+          <div class="about-visual reveal">
+            <div class="about-collage">
+              <!-- Main background image: modern architecture exterior -->
+              <div class="collage-main"></div>
+              <!-- Subtle overlay -->
+              <div class="collage-overlay"></div>
+              <!-- Top-left inset: furniture / sofa -->
+              <div class="collage-inset-tl"></div>
+              <!-- Bottom-right inset: kitchen / material details -->
+              <div class="collage-inset-br"></div>
+              <!-- Bottom badge: Design Ethos · Architecture · Interiors -->
+              <div class="collage-badge">
+                <div class="collage-badge-mark">BF</div>
+                <div class="collage-badge-text">
+                  <span class="badge-title">Design Ethos</span>
+                  <span class="badge-sub">Architecture · Interiors</span>
+                </div>
+              </div>
+            </div>
+            <!-- Floating quote card -->
+            <div class="about-floating-card">
+              <span class="label">Design ethos</span>
+              <span class="value">Quietly bold spaces that age gracefully – built on light, tactility and thoughtful detail.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PORTFOLIO ── -->
+    <section id="portfolio" class="portfolio">
+      <div class="max-w">
+        <div class="section-header reveal">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Work</div>
+            <h2 class="section-title">Selected projects</h2>
+          </div>
+          <p class="section-sub">A cross-section of residences, hospitality and workspaces – each with its own material story, light condition and emotional register.</p>
+        </div>
+        <div class="filter-row reveal">
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="residential">Residential</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="interior">Interiors</button>
+          </div>
+          <div class="filter-meta" id="filterMeta">Showing 6 projects</div>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <article class="project-card reveal" data-category="residential interior" data-project="0" tabindex="0">
+            <div class="project-media">
+              <div class="project-thumb" style="background-image:url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.82787-15/544820502_18337905853203502_6371357345125293196_n.webp?stp=dst-webp_s720x720&_nc_cat=107&ig_cache_key=MzcxNzA4NDI1NDExMjUxMzY5NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=9u81EENzLi8Q7kNvwEU2q9o&_nc_oc=Adl1V-afpZr7Pt2TEBPqP_Pfn7RSjSlLP8kxqOohF3F2lAUAiVKJAXPpMhh3dQODlp8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_AfyI_HQYTlQzDJFWT_zXS47yLtEjGD5-pawsD2t2JQ8ktA&oe=69B05E30');"></div>
+              <span class="project-label">Residence</span>
+              <span class="project-hover">View project ↗</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Casa De Sheel</h3>
+              <div class="project-meta"><span class="location">South Goa</span><span class="project-chip">Natural Charm</span></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="residential interior" data-project="1" tabindex="0">
+            <div class="project-media">
+              <div class="project-thumb" style="background-image:url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/491897137_18322280281203502_2317331028660446746_n.webp?_nc_cat=103&ig_cache_key=MzYyMDc0MTIzMjQzMzE3ODUwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=NgORxE-XmusQ7kNvwFvT3g_&_nc_oc=Admj5QWArzvj-1TeCYTHbJx8Lr0abG5VeafLd9HVLIGUZ2OfoUnasTcuqz3wupk_JKU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1R7AvvBcwrbqybyhZoe4aw&_nc_ss=8&oh=00_AfwAoGKXMn_EDITEX0Th3XgZtTL_7MljZzETy9SduqDKow&oe=69B067ED');"></div>
+              <span class="project-label">Hospitality</span>
+              <span class="project-hover">View project ↗</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Modern Simplicity</h3>
+              <div class="project-meta"><span class="location">New Delhi</span><span class="project-chip">Timeless Elegance</span></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="commercial interior" data-project="2" tabindex="0">
+            <div class="project-media">
+              <div class="project-thumb" style="background-image:url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.82787-15/536302237_18335364466203502_8971031919386162902_n.webp?_nc_cat=102&ig_cache_key=MzcwMzE0Mzc0MDI2NjQyNjU5NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=EgXSxKu-TGwQ7kNvwGiah5z&_nc_oc=Adnwsdv8y48SKlLv5XhY-st9-YCLSULAwa13greD6pYHJgjofQ1sNoWOZU-Dh9yjPZQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_Afw7jJZNUcrCLmtSJtM26WEsvuk1GGtaqqa2NXONKwSejg&oe=69B05A01');"></div>
+              <span class="project-label">Interiors</span>
+              <span class="project-hover">View project ↗</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title"> Kumar's Residence</h3>
+              <div class="project-meta"><span class="location">Haryana</span><span class="project-chip">Modern Architecture</span></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="commercial interior" data-project="3" tabindex="0">
+            <div class="project-media">
+              <div class="project-thumb" style="background-image:url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/487677000_18319066081203502_3265552974438539747_n.webp?_nc_cat=103&ig_cache_key=MzU5OTA3ODk4NTg2MDQyMTEwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzh4ODA5LnNkci5DMyJ9&_nc_ohc=v9a0kZ_Om3EQ7kNvwHZZuKC&_nc_oc=AdlDlLI38mhAuuDv2HVMaSuGKPORFHep4ttSNOcn29jTfWuOWAzSwaVSDw0zoqagttw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=cW-SXg_6_1ROaMWBwm9G8g&_nc_ss=8&oh=00_AfzLEenanZFgYG5Fnh70GVIq5ozQ6nlqb_rgxoK977W9bw&oe=69B07710');"></div>
+              <span class="project-label">Residence</span>
+              <span class="project-hover">View project ↗</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Vasudha</h3>
+              <div class="project-meta"><span class="location">Haryana</span><span class="project-chip">Natural Elements</span></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="residential" data-project="4" tabindex="0">
+            <div class="project-media">
+              <div class="project-thumb" style="background-image:url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/491534578_18321430855203502_6629341002751176667_n.webp?stp=dst-webp_s640x640_sh0.08&_nc_cat=109&ig_cache_key=MzYxNTA2Njc0MTQ4OTA4NTQwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=plRXoK-etu8Q7kNvwHCVtjP&_nc_oc=AdnCoSgogp01QFyjFMiUVkqQRWpdTaKLAQMrKQN6kskQo_1-evTQcvItjwX-Kt8eaS4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1R7AvvBcwrbqybyhZoe4aw&_nc_ss=8&oh=00_Afy-iRLcjgqwM1_pVtrwu5Z7NLBSqM7Zi_eCsDMjI2GPLA&oe=69B079C9');"></div>
+              <span class="project-label">Architecture</span>
+              <span class="project-hover">View project ↗</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Tritay</h3>
+              <div class="project-meta"><span class="location">Haryana</span><span class="project-chip">Chic and Modern</span></div>
+            </div>
+          </article>
+          <article class="project-card reveal" data-category="commercial" data-project="5" tabindex="0">
+            <div class="project-media">
+              <div class="project-thumb" style="background-image:url('https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/497409189_18324201205203502_7833177009897726869_n.webp?stp=dst-webp_s720x720&_nc_cat=107&ig_cache_key=MzYzMjk3MDIyMzg2MDY2OTY2Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=UD7f2aLcMNEQ7kNvwH2_ph8&_nc_oc=Adk0LAtpou_6ABFtz7U1Ba9JqEKRDrDvT9brROZOWgoOvZ1g-raq9uBSBaF_e_YP2C0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_AfyrFzYljahK7NoVc6IsYOf2-oQ99WkCklEFw4KViuxGXg&oe=69B0468A');"></div>
+              <span class="project-label">Residence</span>
+              <span class="project-hover">View project ↗</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Shakuntalam</h3>
+              <div class="project-meta"><span class="location">New Delhi</span><span class="project-chip">Contemporary Aesthetics</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SERVICES ── -->
+    <section id="services" class="services">
+      <div class="max-w">
+        <div class="section-header reveal">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Offerings</div>
+            <h2 class="section-title">How we work with you</h2>
+          </div>
+          <p class="section-sub">From first sketch to final styling, we hold the process closely – collaborating with you, your site and your craftspeople to land a space that feels like you.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card reveal">
+            <div class="service-icon">🏛</div>
+            <h3 class="service-title">Architectural Design</h3>
+            <p class="service-body">Ground-up residential and boutique commercial architecture that balances context, climate and everyday rituals.</p>
+            <div class="service-tags"><span class="service-tag">Concept to execution</span><span class="service-tag">Facades &amp; structure</span><span class="service-tag">Landscape integration</span></div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">⌂</div>
+            <h3 class="service-title">Interior Design</h3>
+            <p class="service-body">Layered, tactile interiors – planning, detailing and curating furniture, lighting and materials that age beautifully.</p>
+            <div class="service-tags"><span class="service-tag">Space planning</span><span class="service-tag">Custom furniture</span><span class="service-tag">Styling &amp; art</span></div>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon">✺</div>
+            <h3 class="service-title">Visualization &amp; Consultation</h3>
+            <p class="service-body">Design direction, 3D visualisation and material palettes for clients and fellow studios seeking clarity before they build.</p>
+            <div class="service-tags"><span class="service-tag">3D &amp; renderings</span><span class="service-tag">Material boards</span><span class="service-tag">Remote consults</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section id="testimonials" class="testimonials">
+      <div class="max-w">
+        <div class="section-header reveal">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Clients</div>
+            <h2 class="section-title">Words from homes we've lived in</h2>
+          </div>
+          <p class="section-sub">We're trusted by homeowners, founders and hospitality teams who care deeply about how their spaces feel – not just how they photograph.</p>
+        </div>
+        <div class="testimonial-wrap">
+          <div class="testimonial-carousel reveal" id="testimonialCarousel">
+            <div class="testimonial-track" id="testimonialTrack">
+              <div class="testimonial-slide">
+                <p class="testimonial-text">Banyan Fig didn't just design our home – they choreographed how our mornings, dinners and quiet evenings would feel. Every surface is thoughtful, yet the space feels effortless and incredibly personal.</p>
+                <div class="testimonial-author">
+                  <span class="name">Aditi &amp; Kunal</span>
+                  <span class="meta">Homeowners · Courtyard Light House, Bengaluru</span>
+                  <div class="testimonial-pills"><span class="pill">Residential</span><span class="pill">Architecture &amp; interiors</span><span class="pill">2023</span></div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <p class="testimonial-text">Working with Banyan Fig felt like having a trusted friend with extraordinary taste. They listened to how we actually live – and the result is a home that surprises us every single day.</p>
+                <div class="testimonial-author">
+                  <span class="name">Priya Menon</span>
+                  <span class="meta">Homeowner · Soft Modern Apartment, Mumbai</span>
+                  <div class="testimonial-pills"><span class="pill">Interior design</span><span class="pill">Urban residence</span><span class="pill">2023</span></div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <p class="testimonial-text">We handed them a difficult brief – a tropical plot, a tight budget, and a dream of calm. What they gave us back was beyond the brief. The tea house breathes with the site.</p>
+                <div class="testimonial-author">
+                  <span class="name">Rajan &amp; Sunita Pillai</span>
+                  <span class="meta">Founders · Studio Tea House, Goa</span>
+                  <div class="testimonial-pills"><span class="pill">Hospitality</span><span class="pill">Architecture</span><span class="pill">2022</span></div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <p class="testimonial-text">The workspace they designed has genuinely changed how our team shows up. There's a quiet focus in the air that didn't exist before. I didn't know a room could do that.</p>
+                <div class="testimonial-author">
+                  <span class="name">Aarav Shah</span>
+                  <span class="meta">Founder · Quiet Studio Office, Delhi NCR</span>
+                  <div class="testimonial-pills"><span class="pill">Commercial</span><span class="pill">Workspace</span><span class="pill">2022</span></div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <p class="testimonial-text">I've worked with other studios before, but Banyan Fig is different. They treat your space like a living thing – asking the right questions, editing boldly, and leaving nothing to chance.</p>
+                <div class="testimonial-author">
+                  <span class="name">Meera Iyer</span>
+                  <span class="meta">Homeowner · Brick &amp; Breeze Home, Hyderabad</span>
+                  <div class="testimonial-pills"><span class="pill">Residential</span><span class="pill">Architecture</span><span class="pill">2024</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-controls">
+              <div class="carousel-dots" id="carouselDots"></div>
+              <div class="carousel-arrows">
+                <button class="carousel-arrow" id="carouselPrev">&#8592;</button>
+                <button class="carousel-arrow" id="carouselNext">&#8594;</button>
+              </div>
+            </div>
+            <div class="carousel-progress" id="carouselProgress"></div>
+          </div>
+          <div class="testimonial-side reveal">
+            <span class="metric"><span>Repeat collaborations</span><strong>70%</strong></span>
+            <span class="metric"><span>Average engagement</span><strong>12–18 mo</strong></span>
+            <span class="metric"><span>Client sentiment</span><strong>"Feels like us"</strong></span>
+            <span>Our role is to listen carefully, edit generously, and deliver calmly – even when sites are complex and timelines are ambitious.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="contact">
+      <div class="max-w">
+        <div class="section-header reveal">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Contact</div>
+            <h2 class="section-title">Let's build your next chapter</h2>
+          </div>
+          <p class="section-sub">Share a few details about your site, city and timelines and we'll respond with next steps, process and an indicative engagement structure.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="contact-block">
+              <div class="contact-label">Studio contact</div>
+              <div class="contact-value">
+                <a href="tel:+919999999999">+91 99 99 99 99 99</a><br>
+                <a href="mailto:hello@banyanfig.studio">hello@banyanfig.studio</a>
+              </div>
+            </div>
+            <div class="contact-block">
+              <div class="contact-label">Studio location</div>
+              <div class="contact-value">Bengaluru · Mumbai · Projects across India</div>
+            </div>
+            <div class="contact-block">
+              <div class="contact-label">Social</div>
+              <div class="contact-social">
+                <!--<a href="https://instagram.com/banyanfig" target="_blank" rel="noopener" class="social-link">F <span>@banyanfig</span></a>
+                <a href="#" class="social-link">FB <span>/banyanfig</span></a>
+                <a href="#" class="social-link">IN <span>/banyan-fig</span></a>-->
+                <!-- Instagram -->
+                <a href="https://instagram.com/banyanfig" target="_blank" rel="noopener" class="social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+                  </svg>
+                  <span>@banyanfig</span>
+                </a>
+                <!-- Facebook -->
+                <a href="#" class="social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                  <span>/banyanfig</span>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="social-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                  <span>/banyan-fig</span>
+                </a>
+              </div>
+            </div>
+            <div class="badge-india">
+              <div class="badge-india-flag"><span></span><span></span><span></span></div>
+              Based in India · Working globally
+            </div>
+          </div>
+          <div class="contact-form-wrap reveal">
+            <div class="contact-form-title">Project enquiry form</div>
+            <div class="contact-form-sub">We typically reply within 2–3 working days. For collaborations, please mention brand and timelines.</div>
+            <form id="contactForm" novalidate>
+              <div class="form-grid">
+                <div class="form-field"><label class="form-label" for="fname">Name</label><input class="form-input" type="text" id="fname" name="name" placeholder="Your full name" required></div>
+                <div class="form-field"><label class="form-label" for="femail">Email</label><input class="form-input" type="email" id="femail" name="email" placeholder="you@example.com" required></div>
+                <div class="form-field"><label class="form-label" for="fphone">Phone</label><input class="form-input" type="tel" id="fphone" name="phone" placeholder="+91 ..." required></div>
+                <div class="form-field"><label class="form-label" for="fcity">City / Site location</label><input class="form-input" type="text" id="fcity" name="city" placeholder="City, State"></div>
+                <div class="form-field"><label class="form-label" for="fservice">Type of project</label>
+                  <select class="form-select" id="fservice" name="service">
+                    <option value="">Select</option>
+                    <option>New home – architecture &amp; interiors</option>
+                    <option>Home interiors / renovation</option>
+                    <option>Commercial / hospitality</option>
+                    <option>Design consultation only</option>
+                  </select>
+                </div>
+                <div class="form-field"><label class="form-label" for="fbudget">Approximate budget</label><input class="form-input" type="text" id="fbudget" name="budget" placeholder="Optional"></div>
+                <div class="form-field full"><label class="form-label" for="fmessage">Tell us about your space</label><textarea class="form-textarea" id="fmessage" name="message" placeholder="Site details, carpet area, timelines and how you'd like the space to feel." required></textarea></div>
+              </div>
+              <div class="form-footer">
+                <div class="form-note">By submitting, you agree to be contacted by Banyan Fig for this enquiry. We never share your details.</div>
+                <button type="submit" class="btn-submit">Submit enquiry <span class="btn-submit-icon">➝</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="max-w footer-row">
+      <div>© <span id="year"></span> Banyan Fig Studio · All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Enquire</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ── PROJECT DRAWER ── -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="projectDrawer" role="dialog" aria-modal="true" aria-label="Project details">
+  <button class="drawer-close" id="drawerClose" aria-label="Close drawer">✕</button>
+  <div class="drawer-hero">
+    <div class="drawer-hero-img" id="drawerHeroImg"></div>
+    <div class="drawer-hero-overlay"></div>
+    <span class="drawer-hero-badge" id="drawerBadge"></span>
+    <div class="drawer-hero-title">
+      <span class="drawer-hero-loc" id="drawerLoc"></span>
+      <span class="drawer-hero-name" id="drawerName"></span>
+    </div>
+  </div>
+  <div class="drawer-body">
+    <div class="drawer-pills" id="drawerPills"></div>
+    <div>
+      <div class="drawer-section-label">About the project</div>
+      <p class="drawer-description" id="drawerDesc"></p>
+    </div>
+    <div>
+      <div class="drawer-section-label">Project details</div>
+      <div class="drawer-specs" id="drawerSpecs"></div>
+    </div>
+    <div>
+      <div class="drawer-section-label">Project images</div>
+      <div class="drawer-gallery" id="drawerGallery"></div>
+    </div>
+    <div class="drawer-cta">
+      <button class="btn-drawer-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); closeDrawer();">Enquire about this project ↗</button>
+      <button class="btn-drawer-secondary" id="drawerCloseBtn">← Back to projects</button>
+    </div>
+  </div>
+</aside>
+
+<!-- ── FULLSCREEN LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">&#8592;</button>
+  <div class="lightbox-img-wrap">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Project image" />
+  </div>
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">&#8594;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  PROJECT DATA
+// ═══════════════════════════════════════════════
+const PROJECTS = [
+  {
+    name: 'Casa de Sheel',
+    city: 'Bengaluru', year: '2023',
+    type: 'Residence', style: 'Earthy minimal',
+    tags: ['Architecture', 'Interiors', 'Vastu-compliant'],
+    heroImg: 'https://instagram.fdel77-1.fna.fbcdn.net/v/t51.82787-15/544820502_18337905853203502_6371357345125293196_n.webp?stp=dst-webp_s720x720&_nc_cat=107&ig_cache_key=MzcxNzA4NDI1NDExMjUxMzY5NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=9u81EENzLi8Q7kNvwEU2q9o&_nc_oc=Adl1V-afpZr7Pt2TEBPqP_Pfn7RSjSlLP8kxqOohF3F2lAUAiVKJAXPpMhh3dQODlp8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_AfyI_HQYTlQzDJFWT_zXS47yLtEjGD5-pawsD2t2JQ8ktA&oe=69B05E30',
+    desc: 'A double-height courtyard family residence in South Bengaluru where every plan decision was governed by the movement of light. Hand-applied lime plaster walls in warm sand tones shift tonality from morning to evening; the central courtyard – open to sky – acts as a living, breathing lung. Materials were sourced within Karnataka: Shahabad stone floors, Mandya granite thresholds, Dharwad terracotta roof tiles and locally woven cane screens.',
+    specs: { 'Location': 'Whitefield, Bengaluru', 'Area': '3,400 sqft (G+1)', 'Typology': 'Private residence', 'Duration': '22 months', 'Year': '2023', 'Materials': 'Shahabad stone, lime plaster, teak, cane' },
+    images: [
+      'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/3316924/pexels-photo-3316924.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ]
+  },
+  { 
+    name: 'Modern Simplicity',
+    city: 'Goa', year: '2022',
+    type: 'Hospitality', style: 'Tropical calm',
+    tags: ['Architecture', 'Hospitality', 'Landscape'],
+    heroImg: 'https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/491897137_18322280281203502_2317331028660446746_n.webp?_nc_cat=103&ig_cache_key=MzYyMDc0MTIzMjQzMzE3ODUwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=NgORxE-XmusQ7kNvwFvT3g_&_nc_oc=Admj5QWArzvj-1TeCYTHbJx8Lr0abG5VeafLd9HVLIGUZ2OfoUnasTcuqz3wupk_JKU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1R7AvvBcwrbqybyhZoe4aw&_nc_ss=8&oh=00_AfwAoGKXMn_EDITEX0Th3XgZtTL_7MljZzETy9SduqDKow&oe=69B067ED',
+    desc: 'On a high floor in Bandra West, this 3BHK apartment was stripped back to allow natural light to take centre stage. A limited palette of blush terrazzo, raw silk and matte white plaster creates an enveloping softness rarely found in city living. Custom joinery in white-lacquer and unlacquered brass keeps the material story restrained yet warm.',
+    specs: { 'Location': 'Bandra West, Mumbai', 'Area': '1,850 sqft', 'Typology': '3 BHK apartment', 'Duration': '14 months', 'Year': '2023', 'Materials': 'Terrazzo, silk, brass, Calcatta marble' },
+    images: [
+      'https://images.pexels.com/photos/6480198/pexels-photo-6480198.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/7045756/pexels-photo-7045756.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/4846097/pexels-photo-4846097.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ]
+  },
+  {
+    name: 'Kumars Residence',
+    city: 'Mumbai', year: '2023',
+    type: 'Interiors', style: 'Urban refuge',
+    tags: ['Interior design', 'Custom furniture', 'Art direction'],
+    heroImg: 'https://instagram.fdel77-1.fna.fbcdn.net/v/t51.82787-15/536302237_18335364466203502_8971031919386162902_n.webp?_nc_cat=102&ig_cache_key=MzcwMzE0Mzc0MDI2NjQyNjU5NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=EgXSxKu-TGwQ7kNvwGiah5z&_nc_oc=Adnwsdv8y48SKlLv5XhY-st9-YCLSULAwa13greD6pYHJgjofQ1sNoWOZU-Dh9yjPZQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_Afw7jJZNUcrCLmtSJtM26WEsvuk1GGtaqqa2NXONKwSejg&oe=69B05A01',
+    desc: 'Nestled into a coconut grove in North Goa, the Studio Tea House is a gathering place for a curated tea programme. Built almost entirely in laterite block quarried onsite, the structure breathes through deep verandahs, louvered screens and a traditional Goan roof pitch. Natural cross-ventilation eliminates air conditioning, and rainwater harvesting closes the water loop.',
+    specs: { 'Location': 'Assagao, North Goa', 'Area': '900 sqft + 600 sqft deck', 'Typology': 'Boutique hospitality', 'Duration': '18 months', 'Year': '2022', 'Materials': 'Laterite block, country tile, bamboo, lime' },
+    images: [
+      'https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1488316/pexels-photo-1488316.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/2029670/pexels-photo-2029670.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/3965534/pexels-photo-3965534.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ]
+  },
+  {
+    name: 'Quiet Studio Office',
+    city: 'Delhi NCR', year: '2022',
+    type: 'Workspace', style: 'Monochrome tactility',
+    tags: ['Commercial', 'Interior design', 'Custom millwork'],
+    heroImg: 'https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/487677000_18319066081203502_3265552974438539747_n.webp?_nc_cat=103&ig_cache_key=MzU5OTA3ODk4NTg2MDQyMTEwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzh4ODA5LnNkci5DMyJ9&_nc_ohc=v9a0kZ_Om3EQ7kNvwHZZuKC&_nc_oc=AdlDlLI38mhAuuDv2HVMaSuGKPORFHep4ttSNOcn29jTfWuOWAzSwaVSDw0zoqagttw&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=cW-SXg_6_1ROaMWBwm9G8g&_nc_ss=8&oh=00_AfzLEenanZFgYG5Fnh70GVIq5ozQ6nlqb_rgxoK977W9bw&oe=69B07710',
+    desc: 'A creative studio in Gurugram designed for a design-led brand consultancy. The brief was deceptively simple: a space that helps people think clearly. The solution was a rigorous material edit – poured concrete floors, blackened steel shelving, white-oak workbenches and a single wall of deep forest green.',
+    specs: { 'Location': 'Cyber Hub, Gurugram', 'Area': '1,200 sqft', 'Typology': 'Creative workspace', 'Duration': '10 months', 'Year': '2022', 'Materials': 'Concrete, black steel, white oak, acoustic felt' },
+    images: [
+      'https://images.pexels.com/photos/37347/office-freelancer-computer-business-37347.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/3637729/pexels-photo-3637729.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ]
+  },
+  {
+    name: 'Tritay',
+    city: 'Hyderabad', year: '2024',
+    type: 'Architecture', style: 'Climate-sensitive',
+    tags: ['Architecture', 'Passive design', 'Landscape'],
+    heroImg: 'https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/491534578_18321430855203502_6629341002751176667_n.webp?stp=dst-webp_s640x640_sh0.08&_nc_cat=109&ig_cache_key=MzYxNTA2Njc0MTQ4OTA4NTQwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=plRXoK-etu8Q7kNvwHCVtjP&_nc_oc=AdnCoSgogp01QFyjFMiUVkqQRWpdTaKLAQMrKQN6kskQo_1-evTQcvItjwX-Kt8eaS4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1R7AvvBcwrbqybyhZoe4aw&_nc_ss=8&oh=00_Afy-iRLcjgqwM1_pVtrwu5Z7NLBSqM7Zi_eCsDMjI2GPLA&oe=69B079C9',
+    desc: 'A ground-up family home designed around Hyderabad\'s punishing summer. The building section was developed to catch the prevailing southwest breeze; deep overhangs shade glazing in summer while admitting low winter sun. Exposed wire-cut brick forms the primary façade, ageing with the family over time.',
+    specs: { 'Location': 'Jubilee Hills, Hyderabad', 'Area': '4,100 sqft (G+1)', 'Typology': 'Private residence', 'Duration': '28 months', 'Year': '2024', 'Materials': 'Wire-cut brick, Kota stone, jaali screens, teak' },
+    images: [
+      'https://images.pexels.com/photos/2343468/pexels-photo-2343468.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/2119714/pexels-photo-2119714.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ]
+  },
+  {
+    name: 'Shakuntalam',
+    city: 'Pune', year: '2021',
+    type: 'Retail', style: 'Gallery-like calm',
+    tags: ['Retail design', 'Lighting design', 'Bespoke fixtures'],
+    heroImg: 'https://instagram.fdel77-1.fna.fbcdn.net/v/t51.75761-15/497409189_18324201205203502_7833177009897726869_n.webp?stp=dst-webp_s720x720&_nc_cat=107&ig_cache_key=MzYzMjk3MDIyMzg2MDY2OTY2Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0Mzd4NzUzLnNkci5DMyJ9&_nc_ohc=UD7f2aLcMNEQ7kNvwH2_ph8&_nc_oc=Adk0LAtpou_6ABFtz7U1Ba9JqEKRDrDvT9brROZOWgoOvZ1g-raq9uBSBaF_e_YP2C0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=instagram.fdel77-1.fna&_nc_gid=1S_YBTdQWmPM842PvNBlTA&_nc_ss=8&oh=00_AfyrFzYljahK7NoVc6IsYOf2-oQ99WkCklEFw4KViuxGXg&oe=69B0468A',
+    desc: 'A concept store for a premium Indian homeware brand, designed to feel more gallery than shop. Products are presented on floating stone plinths at varying heights. Raked sand-finished walls, recessed accent lighting and a single skylit corridor draw customers slowly through the space.',
+    specs: { 'Location': 'Koregaon Park, Pune', 'Area': '780 sqft', 'Typology': 'Retail / concept store', 'Duration': '8 months', 'Year': '2021', 'Materials': 'Kota stone, sand plaster, mild steel, LED strip' },
+    images: [
+      'https://images.pexels.com/photos/3735410/pexels-photo-3735410.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1639597/pexels-photo-1639597.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.pexels.com/photos/3965534/pexels-photo-3965534.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════
+//  LIGHTBOX
+// ═══════════════════════════════════════════════
+let lightboxImages = [];
+let lightboxIndex  = 0;
+
+function openLightbox(images, startIndex) {
+  lightboxImages = images;
+  lightboxIndex  = startIndex;
+  renderLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  if (!document.getElementById('projectDrawer').classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+function renderLightbox() {
+  const img = document.getElementById('lightboxImg');
+  img.src = lightboxImages[lightboxIndex];
+  document.getElementById('lightboxCounter').textContent =
+    `${lightboxIndex + 1} / ${lightboxImages.length}`;
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => {
+  lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+  renderLightbox();
+});
+document.getElementById('lightboxNext').addEventListener('click', () => {
+  lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+  renderLightbox();
+});
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+
+// ═══════════════════════════════════════════════
+//  DRAWER
+// ═══════════════════════════════════════════════
+function openDrawer(idx) {
+  const p = PROJECTS[idx];
+  if (!p) return;
+
+  document.getElementById('drawerHeroImg').style.backgroundImage = `url('${p.heroImg}')`;
+  document.getElementById('drawerBadge').textContent = p.type;
+  document.getElementById('drawerLoc').textContent = `${p.city} · ${p.year}`;
+  document.getElementById('drawerName').textContent = p.name;
+  document.getElementById('drawerHeroImg').onclick = () => openLightbox(p.images, 0);
+
+  const pillsEl = document.getElementById('drawerPills');
+  pillsEl.innerHTML = '';
+  [p.style, ...p.tags].forEach(t => {
+    const s = document.createElement('span');
+    s.className = 'drawer-pill';
+    s.textContent = t;
+    pillsEl.appendChild(s);
+  });
+
+  document.getElementById('drawerDesc').textContent = p.desc;
+
+  const specsEl = document.getElementById('drawerSpecs');
+  specsEl.innerHTML = '';
+  Object.entries(p.specs).forEach(([k, v]) => {
+    specsEl.innerHTML += `<div class="spec-item"><span class="spec-label">${k}</span><span class="spec-value">${v}</span></div>`;
+  });
+
+  const galEl = document.getElementById('drawerGallery');
+  galEl.innerHTML = '';
+  p.images.forEach((src, i) => {
+    const item = document.createElement('div');
+    item.className = 'drawer-gallery-item';
+    item.setAttribute('title', 'Click to enlarge');
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'drawer-gallery-img';
+    imgDiv.style.backgroundImage = `url('${src}')`;
+    item.appendChild(imgDiv);
+    item.addEventListener('click', () => openLightbox(p.images, i));
+    galEl.appendChild(item);
+  });
+
+  document.getElementById('drawerOverlay').classList.add('open');
+  document.getElementById('projectDrawer').classList.add('open');
+  document.getElementById('projectDrawer').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('projectDrawer').classList.remove('open');
+  if (!document.getElementById('lightbox').classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+document.getElementById('drawerOverlay').addEventListener('click', closeDrawer);
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+document.getElementById('drawerCloseBtn').addEventListener('click', closeDrawer);
+
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', () => openDrawer(parseInt(card.dataset.project)));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDrawer(parseInt(card.dataset.project)); }
+  });
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('lightbox').classList.contains('open')) { closeLightbox(); return; }
+    if (document.getElementById('projectDrawer').classList.contains('open')) { closeDrawer(); }
+  }
+  if (document.getElementById('lightbox').classList.contains('open')) {
+    if (e.key === 'ArrowLeft')  { lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length; renderLightbox(); }
+    if (e.key === 'ArrowRight') { lightboxIndex = (lightboxIndex + 1) % lightboxImages.length; renderLightbox(); }
+  }
+});
+
+// ═══════════════════════════════════════════════
+//  FILTERS
+// ═══════════════════════════════════════════════
+(function () {
+  const btns  = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.project-card');
+  const meta  = document.getElementById('filterMeta');
+  function applyFilter(f) {
+    let n = 0;
+    cards.forEach(c => {
+      const cat = (c.dataset.category || '').toLowerCase();
+      const show = f === 'all' || cat.split(/\s+/).includes(f);
+      c.style.display = show ? '' : 'none';
+      if (show) n++;
+    });
+    meta.textContent = `Showing ${n} project${n !== 1 ? 's' : ''}`;
+  }
+  btns.forEach(b => {
+    b.addEventListener('click', () => {
+      btns.forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      applyFilter((b.dataset.filter || 'all').toLowerCase());
+    });
+  });
+  applyFilter('all');
+})();
+
+// ═══════════════════════════════════════════════
+//  TESTIMONIAL CAROUSEL
+// ═══════════════════════════════════════════════
+(function () {
+  const track    = document.getElementById('testimonialTrack');
+  const dotsWrap = document.getElementById('carouselDots');
+  const prevBtn  = document.getElementById('carouselPrev');
+  const nextBtn  = document.getElementById('carouselNext');
+  const progEl   = document.getElementById('carouselProgress');
+  if (!track) return;
+  const slides = track.querySelectorAll('.testimonial-slide');
+  const total  = slides.length;
+  let current  = 0, autoTimer = null;
+  const AUTO_MS = 5000;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+  });
+
+  function getDots() { return dotsWrap.querySelectorAll('.carousel-dot'); }
+  function goTo(i, reset) {
+    current = (i + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    getDots().forEach((d, j) => d.classList.toggle('active', j === current));
+    if (reset) startAuto();
+  }
+  function startProgress() {
+    if (!progEl) return;
+    progEl.style.transition = 'none'; progEl.style.width = '0%';
+    void progEl.offsetWidth;
+    progEl.style.transition = `width ${AUTO_MS}ms linear`; progEl.style.width = '100%';
+  }
+  function startAuto() {
+    clearInterval(autoTimer); startProgress();
+    autoTimer = setInterval(() => { goTo(current + 1, false); startProgress(); }, AUTO_MS);
+  }
+  prevBtn.addEventListener('click', () => goTo(current - 1, true));
+  nextBtn.addEventListener('click', () => goTo(current + 1, true));
+  const car = document.getElementById('testimonialCarousel');
+  car.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  car.addEventListener('mouseleave', () => startAuto());
+  goTo(0, false); startAuto();
+})();
+
+// ═══════════════════════════════════════════════
+//  MOBILE NAV
+// ═══════════════════════════════════════════════
+(function () {
+  const toggle = document.getElementById('navToggle');
+  const mob    = document.getElementById('navMobile');
+  if (!toggle || !mob) return;
+  toggle.addEventListener('click', () => {
+    const active = toggle.classList.toggle('active');
+    mob.style.display = active ? 'flex' : 'none';
+    mob.setAttribute('aria-hidden', String(!active));
+  });
+  mob.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'a') {
+      toggle.classList.remove('active');
+      mob.style.display = 'none';
+      mob.setAttribute('aria-hidden', 'true');
+    }
+  });
+})();
+
+// ═══════════════════════════════════════════════
+//  SCROLL REVEAL
+// ═══════════════════════════════════════════════
+(function () {
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('visible')); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(e => io.observe(e));
+})();
+
+// ═══════════════════════════════════════════════
+//  CONTACT FORM
+// ═══════════════════════════════════════════════
+(function () {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    alert('Thank you for reaching out to Banyan Fig. We will get back to you shortly.');
+    form.reset();
+  });
+})();
+
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
